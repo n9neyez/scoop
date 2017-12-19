@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'TexasRanger';
+  src: url('TexasRanger.woff') format('woff'),
+       url('TexasRanger.svg#TexasRanger') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'texasranger';
+  src: url('texasranger.eot');
+  src: url('texasranger.woff2') format('woff2'),
+       url('texasranger.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+

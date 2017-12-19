@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- Lab 2 for CWEB1111
+     By Kenny Xiong
+     Requesting data from https://api.chucknorris.io/#!
+     All pictures/graphics are pulled from google search with no intent to infringe copyright
+     This web app is for educational purposes only -->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Norris Territory</title>
+        <link rel="icon" href="images/logo.png">
+        <meta name="description" content="Chuck Norris, Chuck Norris jokes, Texas Ranger">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Kenny Xiong">
+
+        
+        <style>
+            @font-face {
+            font-family: 'texasranger';
+            src: url(fonts/texasranger/texasranger.eot); /* IE9 Compat Modes */
+            src: url(fonts/texasranger/texasranger.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */
+                url(fonts/texasranger/texasranger.woff2) format('woff2'), /* Super Modern Browsers */
+                url(fonts/texasranger/texasranger.woff) format('woff'), /* Pretty Modern Browsers */
+                url(fonts/texasranger/texasranger.ttf)  format('truetype'), /* Safari, Android, iOS */
+                url(fonts/texasranger/texasranger.svg#svgFontName) format('svg'); /* Legacy iOS */
+            }
+            html,body {
+                margin: 0;
+            }
+            #container {
+                margin: auto;
+            }
+            .chucks-territory {
+                margin-top: 33px;
+                margin-left: 700px;
+            }
+            .chucks-house {
+                width: 100%;
+                
+            }
+            .chucks-doghouse {
+                background: url(images/bubble.png);
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: 520px;
+                width: 700px;
+                position: absolute;
+                left: 100px;
+            }
+            #boom {
+                background: url(images/giphy.gif);
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 600px;
+                height: 700px;
+                margin: auto;
+            }
+            #chuck {
+                position: absolute;
+                bottom: 0px;
+                right: 200px;
+            }
+            footer {
+                font-family: 'texasranger';
+                position: absolute;
+                bottom: 0px;
+                left: 5px;
+                color: #682020;
+                font-size: 5em;
+            }
+            #text-goes-here {
+                height: 250px;
+                width: 450px;
+                margin: auto;
+                margin-top: 150px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1.5em;
+            }
+            button {
+                width: 200px;
+                height: 50px;
+                background-color: brown;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 2em;
+                border: none;
+                border-radius: 3px;
+                position: absolute;
+                left: 400px;
+                bottom: 150px;
+                outline: none;
+            }
+            button:hover {
+                cursor: pointer;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="chucks-territory">
+            <section class="chucks-doghouse">
+                <div id="text-goes-here">
+
+                </div>
+            </section>
+            <section class="chucks-house">
+                <div id="boom">
+                </div>
+
+                <div id="chuck">
+                    <img src="images/chuck.png" alt="Chuck Norris Doesn't Play">
+                </div>
+            </section>
+        </div>
+        <button onclick="wordsOfWisdom()">CLICK ME!</button>
+        <footer>
+            For Words of Wisdom, Look Up.
+        </footer>
+
+<!-- Can't believe I made this work... -->
+    <script>
+        function wordsOfWisdom() {
+            var xhttp = new XMLHttpRequest();
+            var url = "https://api.chucknorris.io/jokes/random";
+            
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myObj = JSON.parse(this.responseText);
+                    document.getElementById("text-goes-here").innerHTML = myObj.value;
+                }
+            };
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+    </script>        
+    </body>
+</html>
